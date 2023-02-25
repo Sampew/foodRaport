@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Food Raport</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js"></script>
+</head>
+<body>
+  
+    <h1>Food Raport</h1>
+<form> 
+    <h2>Update Account</h2>
+        <label for="id">User ID:</label>
+        <input type="number" id="id"><br><br>
+        <label for="foods">What have you eaten:</label>
+        <input type="text" id="foods"><br><br>
+        <button type="button" onclick="updateUser()">Submit</button>
+      </form>
+</form>
+
+    <h2>Fetch My Food</h2>
+    <form>
+    <label>ID:</label>
+      <input type="text" id="nameInput" />
+      <button type="button" onclick="navigateToUserPage()">Fetch My Food</button>
+    </form>
+
+    <h2>Delete Account</h2>
+    <form>
+      <label>ID:</label>
+      <input type="text" id="input" />
+      <button type="button" onclick="deleteUser()">Delete Account</button>
+    </form>
+
+    <!--<h1>New Account</h1>
+    <form>
+      <br> <label>ID:</label>
+      <input type="text" id="nameInput" />
+      <br> <label>Name:</label>
+      <input type="text" id="nameInput" />
+      <br> <label>Email:</label>
+      <input type="text" id="nameInput" />
+      <br> <label>What have you eaten today:</label>
+      <input type="text" id="nameInput" />
+      <button class="new">New Account</button>
+    </form>-->
+
+</body>
+</html> 

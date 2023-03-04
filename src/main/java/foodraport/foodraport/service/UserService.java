@@ -1,9 +1,8 @@
 package foodraport.foodraport.service;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-
+import java.util.Arrays;
 
 import org.springframework.stereotype.Service;
 
@@ -17,11 +16,11 @@ public class UserService {
 
     public UserService() {
         userList = new ArrayList<>();
-        User user1 = new User(1,"Sampo", "sampo@email.com", "Kebab");
+        /*User user1 = new User(1,"Sampo", "sampo@email.com", "Kebab");
         User user2 = new User(2,"Inga", "inga@email.com", "Pizza");
         User user3 = new User(3,"Joonas", "joonas@email.com", "Kebab");
         User user4 = new User(4,"Santeri", "santeri@email.com","");
-        userList.addAll(Arrays.asList(user1,user2,user3,user4)); //Test users 
+        userList.addAll(Arrays.asList(user1,user2,user3,user4));*/ //Use if you want to add test users
     }
     public User getUser(int id) {
         for (User user : userList) {
@@ -54,14 +53,4 @@ public class UserService {
             }
         }
     }
-
-    public void updateFood(Integer id, String food) {
-        for (User user : userList) {
-            if (user.getId() == id) {
-                user.addFood(food);
-                break;
-            }
-        }
-    }
-
 }

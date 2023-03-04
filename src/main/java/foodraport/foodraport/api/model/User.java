@@ -1,7 +1,5 @@
 package foodraport.foodraport.api.model;
 
-
-
 public class User {
 
     private int id;
@@ -29,10 +27,6 @@ public class User {
         return name;
     }
 
-    public void saveUser(User user) {
-        user.saveUser(user);
-    }
-
     public void setName(String name) {
         this.name = name;
     }
@@ -55,9 +49,5 @@ public class User {
 
     public void addFood(String food) {
         this.foods = foods + food;
-    }
-
-    public String getFood(int id) {
-        return foods;
     }
 }

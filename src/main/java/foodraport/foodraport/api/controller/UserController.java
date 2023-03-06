@@ -21,7 +21,7 @@ public class UserController {
         this.userService = userService;
     }
 
-    @GetMapping("/user")
+    @GetMapping("/user/{id}")
     public User getUser(@RequestParam Integer id) {
         User user = userService.getUser(id);
         if (user != null) {
@@ -30,7 +30,7 @@ public class UserController {
         return null;
     }
 
-    @PutMapping("/user")
+    @PutMapping("/user/{id}")
     public User updateUser(@RequestParam Integer id, @RequestParam String foods) {
         User user = userService.getUser(id);
         String existingFoods = userService.getUser(id).getFoods();
@@ -48,13 +48,13 @@ public class UserController {
         return user;
     }
 
-    @PostMapping("/user")
+    @PostMapping("/user/{id}")
     public User addUser(@RequestParam Integer id, @RequestParam String name, @RequestParam String email, @RequestParam String foods) {
         User user = userService.addUser(id, name, email, foods);
         return user;
     }
 
-    @DeleteMapping("/user")
+    @DeleteMapping("/user/{id}")
     public void deleteUser(@RequestParam Integer id) {
         userService.deleteUser(id);
     }

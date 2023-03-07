@@ -16,11 +16,11 @@ public class UserService {
 
     public UserService() {
         userList = new ArrayList<>();
-        User user1 = new User(1,"Sampo", "sampo@email.com", "Kebab");
+        /*User user1 = new User(1,"Sampo", "sampo@email.com", "Kebab");
         User user2 = new User(2,"Inga", "inga@email.com", "Pizza");
         User user3 = new User(3,"Joonas", "joonas@email.com", "Kebab");
         User user4 = new User(4,"Santeri", "santeri@email.com","");
-        userList.addAll(Arrays.asList(user1,user2,user3,user4)); //Use if you want to add test users
+        userList.addAll(Arrays.asList(user1,user2,user3,user4));*/ //Use if you want to add test users
     }
     public User getUser(int id) {
         for (User user : userList) {
@@ -52,5 +52,8 @@ public class UserService {
                 break;
             }
         }
+    }
+    public List<User> getAllUsers() {
+        return userList;
     }
 }

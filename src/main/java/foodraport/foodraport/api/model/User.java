@@ -50,4 +50,5 @@ public class User {
     public void addFood(String food) {
         this.foods = foods + food;
     }
+
 }

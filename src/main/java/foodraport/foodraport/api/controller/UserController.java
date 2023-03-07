@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -23,8 +24,8 @@ public class UserController {
         this.userService = userService;
     }
 
-    @GetMapping("/user/")
-    public ResponseEntity<?> getUser(@RequestParam Integer id) {
+    @GetMapping("/user/{id}")
+    public ResponseEntity<?> getUser(@PathVariable Integer id) {
         User user = userService.getUser(id);
         if (user != null) {
             return ResponseEntity.status(HttpStatus.OK).body(user);
@@ -32,8 +33,16 @@ public class UserController {
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body("User id " + id + " not found.");
     }
 
-    @PutMapping("/user/")
-    public ResponseEntity<?> updateUser(@RequestParam Integer id, @RequestParam String foods) {
+    @GetMapping("/user/")
+    public ResponseEntity<?> getAllUsers() {
+        if (userService.getAllUsers().isEmpty()) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("No users found.");
+        }
+        return ResponseEntity.status(HttpStatus.OK).body(userService.getAllUsers());
+    }
+
+    @PutMapping("/user/{id}")
+    public ResponseEntity<?> updateUser(@PathVariable Integer id, @RequestParam String foods) {
         User user = userService.getUser(id);
 
         if (user == null) {
@@ -68,8 +77,8 @@ public class UserController {
         return ResponseEntity.status(HttpStatus.CREATED).body("User with id " + id + " created.");
     }
 
-    @DeleteMapping("/user/")
-    public ResponseEntity<?> deleteUser(@RequestParam Integer id) {
+    @DeleteMapping("/user/{id}")
+    public ResponseEntity<?> deleteUser(@PathVariable Integer id) {
         User user = userService.getUser(id);
         
         if (user == null){

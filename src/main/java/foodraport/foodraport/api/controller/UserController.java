@@ -33,7 +33,7 @@ public class UserController {
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body("User id " + id + " not found.");
     }
 
-    @GetMapping("/user/")
+    @GetMapping("/user")
     public ResponseEntity<?> getAllUsers() {
         if (userService.getAllUsers().isEmpty()) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("No users found.");

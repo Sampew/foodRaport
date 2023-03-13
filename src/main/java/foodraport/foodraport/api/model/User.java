@@ -14,7 +14,9 @@ public class User {
         this.foods = foods;
     }
 
-    public int getId() {
+    // Getters and setters
+
+    public int getId() { 
         return id;
     }
 

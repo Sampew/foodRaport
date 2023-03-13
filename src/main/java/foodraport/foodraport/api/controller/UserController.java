@@ -24,7 +24,7 @@ public class UserController {
         this.userService = userService;
     }
 
-    @GetMapping("/user/{id}")
+    @GetMapping("/user/{id}") // Get user by id
     public ResponseEntity<?> getUser(@PathVariable Integer id) {
         User user = userService.getUser(id);
         if (user != null) {
@@ -33,7 +33,7 @@ public class UserController {
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body("User id " + id + " not found.");
     }
 
-    @GetMapping("/user")
+    @GetMapping("/user") // Get all users
     public ResponseEntity<?> getAllUsers() {
         if (userService.getAllUsers().isEmpty()) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("No users found.");
@@ -41,7 +41,7 @@ public class UserController {
         return ResponseEntity.status(HttpStatus.OK).body(userService.getAllUsers());
     }
 
-    @PutMapping("/user/{id}")
+    @PutMapping("/user/{id}") // Update users foods by id
     public ResponseEntity<?> updateUser(@PathVariable Integer id, @RequestParam String foods) {
         User user = userService.getUser(id);
 
@@ -64,7 +64,7 @@ public class UserController {
         return ResponseEntity.status(HttpStatus.OK).body(user);
     }
 
-    @PostMapping("/user/")
+    @PostMapping("/user/") // Add new user
     public ResponseEntity<?> addUser(@RequestParam Integer id, @RequestParam String name, @RequestParam String email, @RequestParam String foods) {
         User user = userService.getUser(id);
         
@@ -77,7 +77,7 @@ public class UserController {
         return ResponseEntity.status(HttpStatus.CREATED).body("User with id " + id + " created.");
     }
 
-    @DeleteMapping("/user/{id}")
+    @DeleteMapping("/user/{id}") // Delete user by id
     public ResponseEntity<?> deleteUser(@PathVariable Integer id) {
         User user = userService.getUser(id);
         
@@ -86,5 +86,13 @@ public class UserController {
         }
         userService.deleteUser(id);
         return ResponseEntity.status(HttpStatus.OK).body("User with id " + id + " deleted.");
+    }
+
+    @GetMapping("/user/search") // Search foods by keyword, returns all foods lists that contain the keyword
+    public ResponseEntity<?> searchFoods(@RequestParam String keyword){
+        if (userService.searchFoods(keyword).isEmpty()){
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("No foods found.");
+        }
+        return ResponseEntity.status(HttpStatus.OK).body(userService.searchFoods(keyword));
     }
 }

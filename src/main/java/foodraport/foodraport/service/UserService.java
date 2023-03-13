@@ -22,7 +22,7 @@ public class UserService {
         User user4 = new User(4,"Santeri", "santeri@email.com","");
         userList.addAll(Arrays.asList(user1,user2,user3,user4));*/ //Use if you want to add test users
     }
-    public User getUser(int id) {
+    public User getUser(Integer id) { //Get user by id
         for (User user : userList) {
             if (user.getId() == id) {
                 return user;
@@ -31,13 +31,13 @@ public class UserService {
         return null;
     }
 
-    public User addUser(Integer id,String name, String email, String foods) {
+    public User addUser(Integer id,String name, String email, String foods) { //Add new user
         User newUser = new User(id, name, email, foods);
         userList.add(newUser);
         return newUser;
     }
 
-    public void deleteUser(Integer id) {
+    public void deleteUser(Integer id) { //Delete user by id
         for (User user : userList) {
             if (user.getId() == id) {
                 userList.remove(user);
@@ -45,7 +45,7 @@ public class UserService {
             }
         }
     }
-    public void updateUser(Integer id,String foods) {
+    public void updateUser(Integer id,String foods) { //Update user by id
         for (User user : userList) {
             if (user.getId() == id) {
                 user.addFood(foods);
@@ -53,7 +53,17 @@ public class UserService {
             }
         }
     }
-    public List<User> getAllUsers() {
+    public List<User> getAllUsers() { //Get all users
         return userList;
+    }
+
+    public List<String> searchFoods(String keyword) { //Search for foods
+        List<String> matchingFoods = new ArrayList<>();
+        for (User user : userList) {
+            if (user.getFoods().contains(keyword)) {
+                matchingFoods.add(user.getFoods());
+            }
+        }
+        return matchingFoods;
     }
 }
